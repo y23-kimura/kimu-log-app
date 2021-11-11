@@ -10,7 +10,7 @@ const apiRouter = (knex) => {
       const response = await knex.select().from(table);
       res.send({ results: response });
     } catch (error) {
-      throw Error(error);
+      throw error;
     }
   });
 
