@@ -1,0 +1,19 @@
+{
+  "name": "kimu-log-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://y23-kimura@github.com/y23-kimura/kimu-log-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/y23-kimura/kimu-log-app/issues"
+  },
+  "homepage": "https://github.com/y23-kimura/kimu-log-app#readme"
+}
