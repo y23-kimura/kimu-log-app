@@ -1,0 +1,16 @@
+version: "3"
+services:
+  appdb:
+    image: postgres:14.0-alpine
+    container_name: "appdb"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+    ports:
+      - "15432:5432"
+    hostname: postgres
+    user: postgres
+    restart: always
