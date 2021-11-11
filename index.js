@@ -1,7 +1,7 @@
 // entry point
 
 // DB connection
-const { config: dbconf } = require("../config/dbconfig");
+const { config: dbconf } = require("./src/config/dbconfig");
 const knex = require("knex")(dbconf);
 
 const table = "store";
@@ -32,10 +32,8 @@ const app = express();
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-// controller
-
 // get store list
-app.get("/v1/stores", async (req, res) => {
+app.get("/api/v1/stores", async (req, res) => {
   try {
     const response = await knex.select().from(table);
     res.send({ results: response });
@@ -45,7 +43,7 @@ app.get("/v1/stores", async (req, res) => {
 });
 
 // post store list
-app.post("/v1/stores", async (req, res) => {
+app.post("/api/v1/stores", async (req, res) => {
   try {
     const { body } = req;
     console.log(req);
@@ -61,7 +59,7 @@ app.post("/v1/stores", async (req, res) => {
 
 // update store list
 
-app.patch("/v1/stores/:id", async (req, res) => {
+app.patch("/api/v1/stores/:id", async (req, res) => {
   try {
     const { body } = req;
     const { id } = req.params;
@@ -75,7 +73,7 @@ app.patch("/v1/stores/:id", async (req, res) => {
 });
 
 // delete store list
-const { config: apiconf } = require("../config/apiconfig");
+const { config: apiconf } = require("./src/config/apiconfig");
 const port = apiconf.port;
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
