@@ -34,8 +34,11 @@ const apiRouter = (knex) => {
       const { body } = req;
       const { id } = req.params;
       // TODO: validation check
-      const { rowCount: count } = await knex(table).where({ id }).update(body);
-      res.send({ results: count });
+      const response = await knex(table)
+        .where({ id })
+        .update(body)
+        .returning("*");
+      res.send({ results: response });
     } catch (error) {
       res.status(500).end();
       throw error;

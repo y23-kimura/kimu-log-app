@@ -10,6 +10,15 @@ const createStore = async (req) => {
   }
 };
 
+const updateStore = async (req, id) => {
+  try {
+    const res = await axios.patch(URL + "/stores/" + id, req);
+    return res.data.results;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 const postBtn = document.getElementById("postBtn");
 postBtn.addEventListener("click", async (event) => {
   event.preventDefault();
@@ -21,8 +30,25 @@ postBtn.addEventListener("click", async (event) => {
   };
   try {
     const res = await createStore(request);
-    console.log(res);
     alert(res + "件の更新に成功しました。");
+  } catch (error) {
+    alert("更新に失敗しました。");
+  }
+});
+
+const updateBtn = document.getElementById("updateBtn");
+updateBtn.addEventListener("click", async (event) => {
+  event.preventDefault();
+  const formEl = document.forms[1];
+  const id = formEl[0].value;
+  const request = {
+    name: formEl[1].value,
+    address: formEl[2].value,
+    tel: formEl[3].value,
+  };
+  try {
+    const res = await updateStore(request, id);
+    alert(res.length + "件の更新に成功しました。");
   } catch (error) {
     alert("更新に失敗しました。");
   }
