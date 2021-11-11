@@ -1,16 +1,17 @@
 // entry point
-
+// read config file
+require("dotenv").config();
 // DB connection
 
 const knex = require("knex")({
   client: "pg",
   version: "7.2",
   connection: {
-    host: "127.0.0.1",
-    port: 15432,
-    user: "postgres",
-    password: "postgres",
-    database: "tabelog",
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    database: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
   },
 });
 
@@ -41,7 +42,6 @@ const express = require("express");
 const app = express();
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-const port = 3000;
 
 // controller
 
@@ -86,7 +86,7 @@ app.patch("/v1/stores/:id", async (req, res) => {
 });
 
 // delete store list
-
+const port = process.env.EXPRESS_PORT;
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
