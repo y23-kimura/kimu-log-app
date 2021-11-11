@@ -19,6 +19,15 @@ const updateStore = async (req, id) => {
   }
 };
 
+const deleteStore = async (id) => {
+  try {
+    const res = await axios.delete(URL + "/stores/" + id);
+    return res.data.results;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 const postBtn = document.getElementById("postBtn");
 postBtn.addEventListener("click", async (event) => {
   event.preventDefault();
@@ -30,9 +39,9 @@ postBtn.addEventListener("click", async (event) => {
   };
   try {
     const res = await createStore(request);
-    alert(res + "件の更新に成功しました。");
+    alert(res + "件の登録に成功しました。");
   } catch (error) {
-    alert("更新に失敗しました。");
+    alert("登録に失敗しました。");
   }
 });
 
@@ -51,5 +60,18 @@ updateBtn.addEventListener("click", async (event) => {
     alert(res.length + "件の更新に成功しました。");
   } catch (error) {
     alert("更新に失敗しました。");
+  }
+});
+
+const deleteBtn = document.getElementById("deleteBtn");
+deleteBtn.addEventListener("click", async (event) => {
+  event.preventDefault();
+  const formEl = document.forms[2];
+  const id = formEl[0].value;
+  try {
+    const res = await deleteStore(id);
+    alert(res.length + "件の削除に成功しました。");
+  } catch (error) {
+    alert("削除に失敗しました。");
   }
 });

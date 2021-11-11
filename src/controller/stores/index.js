@@ -28,7 +28,6 @@ const apiRouter = (knex) => {
   });
 
   // update store list
-  // TODO: 数字だけがインプットされるように修正
   router.patch("/:id(\\d+)/", async (req, res) => {
     try {
       const { body } = req;
@@ -38,6 +37,17 @@ const apiRouter = (knex) => {
         .where({ id })
         .update(body)
         .returning("*");
+      res.send({ results: response });
+    } catch (error) {
+      res.status(500).end();
+      throw error;
+    }
+  });
+
+  router.delete("/:id(\\d+)/", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const response = await knex(table).where({ id }).del().returning("*");
       res.send({ results: response });
     } catch (error) {
       res.status(500).end();
