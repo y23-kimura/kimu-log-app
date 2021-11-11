@@ -2,7 +2,7 @@ version: "3"
 services:
   appdb:
     image: postgres:14.0-alpine
-    container_name: "appdb"
+    container_name: "tabelog"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
