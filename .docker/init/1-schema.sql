@@ -2,7 +2,7 @@
 
 CREATE TABLE STORE  (
     id serial, 
-    "name" varchar(10), 
+    "name" varchar(20), 
     "address" varchar(50),
-    "tel" varchar(11)
+    "tel" varchar(20)
 )

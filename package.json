@@ -8,6 +8,7 @@
     "dev": "nodemon src/index.js",
     "test": "node tests/initialize.js && mocha tests/test.js --exit && npm run lint",
     "lint": "eslint --fix .",
+    "makeMigrate": "knex migrate:make --knexfile src/knexfile.js",
     "migrate": "knex migrate:latest --knexfile src/knexfile.js",
     "rollback": "knex migrate:rollback --knexfile src/knexfile.js "
   },

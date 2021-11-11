@@ -1,6 +1,7 @@
 // Update with your config settings.
 const { config } = require("./config/dbconfig");
 
+console.log(config);
 module.exports = {
   client: "pg",
   connection: config.connection,
