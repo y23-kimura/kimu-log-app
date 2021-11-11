@@ -16,9 +16,10 @@ const showStoreList = async () => {
   if (!Array.isArray(res)) return;
 
   const mainEl = document.getElementById("main");
-  console.log(res);
-
   res.forEach((value) => {
+    const storeIdEl = document.createElement("td");
+    storeIdEl.className = "store_id";
+    storeIdEl.innerText = value.id;
     const storeNameEl = document.createElement("td");
     storeNameEl.className = "store_name";
     storeNameEl.innerText = value.name;
@@ -30,6 +31,8 @@ const showStoreList = async () => {
     storeTelEl.innerText = value.tel;
 
     const tr = document.createElement("tr");
+    tr.className = "store_tr";
+    tr.appendChild(storeIdEl);
     tr.appendChild(storeNameEl);
     tr.appendChild(storeAddressEl);
     tr.appendChild(storeTelEl);
@@ -37,4 +40,5 @@ const showStoreList = async () => {
   });
 };
 
+// setInterval(showStoreList, 5000);
 showStoreList();
