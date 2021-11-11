@@ -10,6 +10,26 @@ const app = express();
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
+// swagger config
+const swaggerJSDoc = require("swagger-jsdoc");
+//swaggerの基本定義
+var options = {
+  swaggerDefinition: {
+    info: {
+      title: "HELLO KIMULOG APP",
+      version: "1.0.0.",
+    },
+  },
+  apis: ["./**/controller/**/*.js"], //自分自身を指定。外部化した場合は、そのファイルを指定。配列で複数指定も可能。
+};
+const swaggerSpec = swaggerJSDoc(options);
+
+//swagger-ui向けにjsonを返すAPI
+app.get("/api-docs", function (req, res) {
+  res.setHeader("Content-Type", "application/json");
+  res.send(swaggerSpec);
+});
+
 // set router
 const router = require("./src/controller/stores");
 
