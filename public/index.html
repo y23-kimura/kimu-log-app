@@ -11,23 +11,18 @@
 </head>
 <body>
     <h1> HELLO TABELOG APP</h1>
-    <div class="continer">
+    <div class="container">
         <div class="sidebar">
             <p>新規登録</p>
-            <form>
-                <input name="storeName" type="text" placeholder="店舗名">
-                <input name="storeAddress" type="text" placeholder="住所">
-                <input name="storeTel" type="tel" placeholder="電話番号">
-                <button id="postBtn"> 送信 </button>
+            <form >
+                <label for="storeName">店舗名　：<input name="storeName" type="text" placeholder="店舗名"></label>
+                <label for="storeName">住所　　：<input name="storeAddress" type="text" placeholder="住所"></label>
+                <label for="storeName">電話番号：<input name="storeTel" type="tel" placeholder="電話番号"></label>
+                <button id="postBtn"> 新規店舗の登録 </button>
             </form>
         </div>
         <main class="main" id="main">
-            <div class="store">
-                <img src="" alt="this is store image">
-                <h2 class="store-name"> store name </h2>
-                <p class="store_address"> store_address </p>
-                <p class="store_tel"> store_tel </p>
-            </div>
+          
         </main>
     </div>
     <script src="index.js"></script>

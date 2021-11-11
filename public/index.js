@@ -21,7 +21,10 @@ const showStoreList = async () => {
     storeEl.className = "store";
     const imageEl = document.createElement("img");
     // imageEl.src = "unknown";
+    imageEl.className = "store_img";
     imageEl.alt = "this is store Image";
+    const storeInfoEl = document.createElement("div");
+    storeInfoEl.className = "store_info";
     const storeNameEl = document.createElement("h3");
     storeNameEl.className = "store_name";
     storeNameEl.innerText = value.name;
@@ -32,9 +35,10 @@ const showStoreList = async () => {
     storeTelEl.className = "store_tel";
     storeTelEl.innerText = value.tel;
     storeEl.appendChild(imageEl);
-    storeEl.appendChild(storeNameEl);
-    storeEl.appendChild(storeTelEl);
-    storeEl.appendChild(storeAddressEl);
+    storeEl.appendChild(storeInfoEl);
+    storeInfoEl.appendChild(storeNameEl);
+    storeInfoEl.appendChild(storeTelEl);
+    storeInfoEl.appendChild(storeAddressEl);
     mainEl.appendChild(storeEl);
   });
 };
