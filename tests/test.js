@@ -1,4 +1,9 @@
 /* eslint-disable no-console */
+const chai = require("chai");
+const chaiHttp = require("chai-http");
+chai.use(chaiHttp);
+chai.should();
+
 const { expect, assert } = require("chai");
 const { config } = require("../src/config/dbconfig");
 const knex = require("knex")(config);
@@ -7,7 +12,7 @@ const forcePromiseReject = () => {
   throw new Error("This promise should have failed, but did not.");
 };
 
-describe("users", () => {
+describe("store", () => {
   describe("setup", () => {
     it("able to connect to database", () =>
       knex

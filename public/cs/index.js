@@ -16,30 +16,24 @@ const showStoreList = async () => {
   if (!Array.isArray(res)) return;
 
   const mainEl = document.getElementById("main");
+  console.log(res);
+
   res.forEach((value) => {
-    const storeEl = document.createElement("div");
-    storeEl.className = "store";
-    const imageEl = document.createElement("img");
-    // imageEl.src = "unknown";
-    imageEl.className = "store_img";
-    imageEl.alt = "this is store Image";
-    const storeInfoEl = document.createElement("div");
-    storeInfoEl.className = "store_info";
-    const storeNameEl = document.createElement("h3");
+    const storeNameEl = document.createElement("td");
     storeNameEl.className = "store_name";
     storeNameEl.innerText = value.name;
-    const storeAddressEl = document.createElement("p");
+    const storeAddressEl = document.createElement("td");
     storeAddressEl.className = "store_address";
     storeAddressEl.innerText = value.address;
-    const storeTelEl = document.createElement("p");
+    const storeTelEl = document.createElement("td");
     storeTelEl.className = "store_tel";
     storeTelEl.innerText = value.tel;
-    storeEl.appendChild(imageEl);
-    storeEl.appendChild(storeInfoEl);
-    storeInfoEl.appendChild(storeNameEl);
-    storeInfoEl.appendChild(storeTelEl);
-    storeInfoEl.appendChild(storeAddressEl);
-    mainEl.appendChild(storeEl);
+
+    const tr = document.createElement("tr");
+    tr.appendChild(storeNameEl);
+    tr.appendChild(storeAddressEl);
+    tr.appendChild(storeTelEl);
+    mainEl.appendChild(document.createElement("tbody").appendChild(tr));
   });
 };
 
