@@ -4,28 +4,16 @@ const table = "store";
 const apiRouter = (knex) => {
   const router = express.Router();
 
-  // get store list
   /**
    * @swagger
-   * /login:
-   *   post:
-   *     description: Login to the application
+   * /api/v1/stores:
+   *   get:
+   *     description: get store list
    *     produces:
    *       - application/json
-   *     parameters:
-   *       - name: username
-   *         description: Username to use for login.
-   *         in: formData
-   *         required: true
-   *         type: string
-   *       - name: password
-   *         description: User's password.
-   *         in: formData
-   *         required: true
-   *         type: string
    *     responses:
    *       200:
-   *         description: login
+   *         description: get store list
    */
   router.get("/", async (req, res) => {
     try {
@@ -36,7 +24,33 @@ const apiRouter = (knex) => {
     }
   });
 
-  // post store list
+  /**
+   * @swagger
+   * /api/v1/stores:
+   *   post:
+   *     description: create new store
+   *     produces:
+   *       - application/json
+   *     parameters:
+   *       - name: name
+   *         description: storeName
+   *         required: true
+   *         in: body
+   *         type: string
+   *       - name: address
+   *         description: storeAddress
+   *         required: true
+   *         in: body
+   *         type: string
+   *       - name: tel
+   *         description: storeTel
+   *         required: true
+   *         in: body
+   *         type: string
+   *     responses:
+   *       200:
+   *         description: create new store
+   */
   router.post("/", async (req, res) => {
     try {
       const { body } = req;
@@ -49,7 +63,33 @@ const apiRouter = (knex) => {
     }
   });
 
-  // update store list
+  /**
+   * @swagger
+   * /api/v1/stores/{id}:
+   *   patch:
+   *     description: update new store
+   *     produces:
+   *       - application/json
+   *     parameters:
+   *       - name: name
+   *         description: storeName
+   *         required: true
+   *         in: body
+   *         type: string
+   *       - name: address
+   *         description: storeAddress
+   *         required: true
+   *         in: body
+   *         type: string
+   *       - name: tel
+   *         description: storeTel
+   *         required: true
+   *         in: body
+   *         type: string
+   *     responses:
+   *       200:
+   *         description: update new store
+   */
   router.patch("/:id(\\d+)/", async (req, res) => {
     try {
       const { body } = req;
@@ -66,6 +106,17 @@ const apiRouter = (knex) => {
     }
   });
 
+  /**
+   * @swagger
+   * /api/v1/stores/{id}:
+   *   delete:
+   *     description: delete new store
+   *     produces:
+   *       - application/json
+   *     responses:
+   *       200:
+   *         description: update new store
+   */
   router.delete("/:id(\\d+)/", async (req, res) => {
     try {
       const { id } = req.params;

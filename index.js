@@ -47,16 +47,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// Auth middleware ( Basic Authorization)
-app.use("/api/v1/stores", (req, res, next) => {
-  if (req.method === "GET") {
-    next();
-  }
-  // const base64 = req.get("Authorization");
-  // console.log(base64);
-  next();
-});
-
 app.use("/api/v1/stores", router(knex));
 
 // routing for static file
