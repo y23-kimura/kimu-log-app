@@ -2,10 +2,10 @@
   "name": "kimu-log-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/entry/index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node src/entry/index.js",
+    "dev": "nodemon src/entry/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

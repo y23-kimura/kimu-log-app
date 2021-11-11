@@ -1,23 +1,12 @@
 // entry point
-// read config file
-require("dotenv").config();
-// DB connection
 
-const knex = require("knex")({
-  client: "pg",
-  version: "7.2",
-  connection: {
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    database: process.env.DB_NAME,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-  },
-});
+// DB connection
+const { config: dbconf } = require("../config/dbconfig");
+const knex = require("knex")(dbconf);
 
 const table = "store";
 const obj = {
-  name: "yosukeSHOP",
+  name: "ySHOPS",
   address: "世田谷区",
   tel: "000-000-00",
 };
@@ -86,7 +75,8 @@ app.patch("/v1/stores/:id", async (req, res) => {
 });
 
 // delete store list
-const port = process.env.EXPRESS_PORT;
+const { config: apiconf } = require("../config/apiconfig");
+const port = apiconf.port;
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
