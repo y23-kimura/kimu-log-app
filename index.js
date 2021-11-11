@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 // swagger config
 const swaggerJSDoc = require("swagger-jsdoc");
 //swaggerの基本定義
-var options = {
+const options = {
   swaggerDefinition: {
     info: {
       title: "HELLO KIMULOG APP",
