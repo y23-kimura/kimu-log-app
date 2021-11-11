@@ -39,25 +39,57 @@ knex(table)
 // express connection
 const express = require("express");
 const app = express();
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 const port = 3000;
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
 
 // controller
 
 // get store list
+app.get("/v1/stores", async (req, res) => {
+  try {
+    const response = await knex.select().from(table);
+    res.send({ results: response });
+  } catch (error) {
+    throw Error(error);
+  }
+});
 
 // post store list
+app.post("/v1/stores", async (req, res) => {
+  try {
+    const { body } = req;
+    console.log(req);
+    // TODO: validation check
+    console.log(body);
+    const { rowCount: count } = await knex(table).insert(body);
+    res.send({ results: count });
+  } catch (error) {
+    res.status(500).end();
+    throw error;
+  }
+});
 
 // update store list
 
+app.patch("/v1/stores/:id", async (req, res) => {
+  try {
+    const { body } = req;
+    const { id } = req.params;
+    // TODO: validation check
+    const { rowCount: count } = await knex(table).where({ id }).update(body);
+    res.send({ results: count });
+  } catch (error) {
+    res.status(500).end();
+    throw error;
+  }
+});
+
 // delete store list
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
 
 // service
 
