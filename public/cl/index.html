@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- axios library -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>tabelog app</title>
+</head>
+<body>
+    <h1> Admin PAGE</h1>
+    <div class="container">
+        <div class="post">
+            <h1>新規登録</h1>
+            <form >
+                <label for="storeName">店舗名　：<input name="storeName" type="text" placeholder="店舗名"></label>
+                <label for="storeName">住所　　：<input name="storeAddress" type="text" placeholder="住所"></label>
+                <label for="storeName">電話番号：<input name="storeTel" type="tel" placeholder="電話番号"></label>
+                <button id="postBtn"> 新規店舗の登録 </button>
+            </form>
+        </div>
+        <div class="post">
+            <h1>店舗情報更新</h1>
+            <form >
+                <label for="storeName">店舗ID　：<input name="storeId" type="text" placeholder="店舗ID"></label>
+                <label for="storeName">店舗名　：<input name="storeName" type="text" placeholder="店舗名"></label>
+                <label for="storeName">住所　　：<input name="storeAddress" type="text" placeholder="住所"></label>
+                <label for="storeName">電話番号：<input name="storeTel" type="tel" placeholder="電話番号"></label>
+                <button id="updateBtn"> 店舗情報の更新 </button>
+            </form>
+        </div>
+        <div class="post">
+            <h1>店舗削除</h1>
+            <form >
+                <label for="storeName">店舗ID　：<input name="storeId" type="text" placeholder="店舗ID"></label>
+                <button id="deleteBtn"> 登録店舗の削除 </button>
+            </form>
+        </div>
+
+</body>
+</html>
