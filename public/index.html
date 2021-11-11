@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- axios library -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>tabelog app</title>
+</head>
+<body>
+    <h1> HELLO TABELOG APP</h1>
+    <div class="continer">
+        <div class="sidebar">
+            <p>新規登録</p>
+            <form>
+                <input name="storeName" type="text" placeholder="店舗名">
+                <input name="storeAddress" type="text" placeholder="住所">
+                <input name="storeTel" type="tel" placeholder="電話番号">
+                <button id="postBtn"> 送信 </button>
+            </form>
+        </div>
+        <main class="main" id="main">
+            <div class="store">
+                <img src="" alt="this is store image">
+                <h2 class="store-name"> store name </h2>
+                <p class="store_address"> store_address </p>
+                <p class="store_tel"> store_tel </p>
+            </div>
+        </main>
+    </div>
+    <script src="index.js"></script>
+
+</body>
+</html>

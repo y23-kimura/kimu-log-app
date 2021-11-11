@@ -5,24 +5,24 @@ const { config: dbconf } = require("./src/config/dbconfig");
 const knex = require("knex")(dbconf);
 
 const table = "store";
-const obj = {
-  name: "ySHOPS",
-  address: "世田谷区",
-  tel: "000-000-00",
-};
-knex(table)
-  .insert(obj)
-  .catch((err) => {
-    // sanitize known errors
-    if (
-      err.message.match("duplicate key value") ||
-      err.message.match("UNIQUE constraint failed")
-    )
-      return Promise.reject(new Error("That username already exists"));
+// const obj = {
+//   name: "ySHOPS",
+//   address: "世田谷区",
+//   tel: "000-000-00",
+// };
+// knex(table)
+//   .insert(obj)
+//   .catch((err) => {
+//     // sanitize known errors
+//     if (
+//       err.message.match("duplicate key value") ||
+//       err.message.match("UNIQUE constraint failed")
+//     )
+//       return Promise.reject(new Error("That username already exists"));
 
-    // throw unknown errors
-    return Promise.reject(err);
-  });
+//     // throw unknown errors
+//     return Promise.reject(err);
+//   });
 
 // migration
 
@@ -71,6 +71,8 @@ app.patch("/api/v1/stores/:id", async (req, res) => {
     throw error;
   }
 });
+
+app.use(express.static(`${__dirname}/public`));
 
 // delete store list
 const { config: apiconf } = require("./src/config/apiconfig");
