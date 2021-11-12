@@ -32,21 +32,22 @@ const apiRouter = (knex) => {
    *     produces:
    *       - application/json
    *     parameters:
-   *       - name: name
+   *       - name: body
    *         description: storeName
    *         required: true
    *         in: body
-   *         type: string
-   *       - name: address
-   *         description: storeAddress
-   *         required: true
-   *         in: body
-   *         type: string
-   *       - name: tel
-   *         description: storeTel
-   *         required: true
-   *         in: body
-   *         type: string
+   *         schema:
+   *          type: "object"
+   *          properties:
+   *            name:
+   *              type: "string"
+   *              example: "fugafuga"
+   *            address:
+   *              type: "string"
+   *              example: "世田谷区"
+   *            tel:
+   *              type: "string"
+   *              example: "0000-000-00"
    *     responses:
    *       200:
    *         description: create new store
@@ -71,21 +72,25 @@ const apiRouter = (knex) => {
    *     produces:
    *       - application/json
    *     parameters:
-   *       - name: name
+   *       - name: id
+   *         in: path
+   *         type: "integer"
+   *       - name: body
    *         description: storeName
    *         required: true
    *         in: body
-   *         type: string
-   *       - name: address
-   *         description: storeAddress
-   *         required: true
-   *         in: body
-   *         type: string
-   *       - name: tel
-   *         description: storeTel
-   *         required: true
-   *         in: body
-   *         type: string
+   *         schema:
+   *          type: "object"
+   *          properties:
+   *            name:
+   *              type: "string"
+   *              example: "fugafuga"
+   *            address:
+   *              type: "string"
+   *              example: "世田谷区"
+   *            tel:
+   *              type: "string"
+   *              example: "0000-000-00"
    *     responses:
    *       200:
    *         description: update new store
@@ -113,6 +118,10 @@ const apiRouter = (knex) => {
    *     description: delete new store
    *     produces:
    *       - application/json
+   *     parameters:
+   *       - name: id
+   *         in: path
+   *         type: "integer"
    *     responses:
    *       200:
    *         description: update new store
